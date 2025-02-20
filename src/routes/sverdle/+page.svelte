@@ -14,7 +14,7 @@
 	const reducedMotion = new MediaQuery('(prefers-reduced-motion: reduce)');
 
 	/** Whether or not the user has won */
-	let won = $derived(data.answers.at(-1) === 'xxxxx');
+	let won = $derived(data.answers.at(-1) === 'XXXXX');
 
 	/** The index of the current guess */
 	let i = $derived(won ? -1 : data.answers.length);
@@ -45,12 +45,12 @@
 			const guess = data.guesses[i];
 			for (let i = 0; i < 5; i += 1) {
 				const letter = guess[i];
-				if (answer[i] === 'x') {
+				if (answer[i] === 'X') {
 					classnames[letter] = 'exact';
 					description[letter] = 'correct';
 				} else if (!classnames[letter]) {
-					classnames[letter] = answer[i] === 'c' ? 'close' : 'missing';
-					description[letter] = answer[i] === 'c' ? 'present' : 'absent';
+					classnames[letter] = answer[i] === 'O' ? 'close' : 'missing';
+					description[letter] = answer[i] === 'O' ? 'present' : 'absent';
 				}
 			}
 		});
@@ -63,9 +63,7 @@
 	 */
 	function update(event: MouseEvent) {
 		event.preventDefault();
-		const key = (event.target as HTMLButtonElement).getAttribute(
-			'data-key'
-		);
+		const key = (event.target as HTMLButtonElement).getAttribute('data-key');
 
 		if (key === 'backspace') {
 			currentGuess = currentGuess.slice(0, -1);

@@ -43,7 +43,7 @@ export class Game {
 		// first, find exact matches
 		for (let i = 0; i < 5; i += 1) {
 			if (letters[i] === available[i]) {
-				answer[i] = 'x';
+				answer[i] = 'X';
 				available[i] = ' ';
 			}
 		}
@@ -55,7 +55,7 @@ export class Game {
 			if (answer[i] === '_') {
 				const index = available.indexOf(letters[i]);
 				if (index !== -1) {
-					answer[i] = 'c';
+					answer[i] = 'O';
 					available[index] = ' ';
 				}
 			}
